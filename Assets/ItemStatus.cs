@@ -8,8 +8,27 @@ public abstract class ItemStatus : MonoBehaviour
     short id;
     float runtime;
     float downtime;
+
+    public enum ItemType
+    {
+        Vent,
+        Light
+    }
+    public ItemType type;
     public enum errorColor { green, yellow, red, blue, grey};
 
+    protected void Start()
+    {
+        //StartCoroutine(ChangeStateAfterSeconds(1));
+    }
+
+    private void Update()
+    {
+        if (error && Input.GetKeyDown(KeyCode.R))
+        {
+            UnderRepair();
+        }
+    }
     //event
     public event EventHandler<OnKeyPressedEventArgs> OnKeyPressed;
     public class OnKeyPressedEventArgs : EventArgs
@@ -17,33 +36,9 @@ public abstract class ItemStatus : MonoBehaviour
         public enum eColor { yellow, red, grey };
     }
     public event Action<errorColor> OnActionEvent;
-   /*  private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            int a = UnityEngine.Random.Range(0, 3);
-            errorColor e;
-            switch (a)
-            {
-                case 0:
-                    e = errorColor.yellow; break;
-                case 1:
-                    e = errorColor.red; break;
-                case 2:
-                    e = errorColor.grey; break;
-                default:
-                    e = errorColor.red;
-                    break;
-            }
-            SimulateState(e);
-
-        }
-        
-    }*/
-
-
+   
     //er der en fejl eller ej true/false
-    bool error=false;
+    protected bool error=false;
     Color currentColor;
    
 
@@ -61,29 +56,17 @@ public abstract class ItemStatus : MonoBehaviour
 
     public void SimulateState(errorColor e)
     {
-        
+
         switch (e)
         {
-            case errorColor.green:
-                currentColor = Color.green;
-                break;
-            case errorColor.yellow:
-                currentColor = Color.yellow; 
-
-                break;
-            case errorColor.red:
-                currentColor = Color.red; 
-                break;
-            case errorColor.blue:
-                currentColor = Color.blue;
-                break;
-            case errorColor.grey: 
-                currentColor = Color.grey;
-                break;
-             
+            case errorColor.green: currentColor = Color.green; error = false; break;
+            case errorColor.yellow: currentColor = Color.yellow; error = true; break;
+            case errorColor.red: currentColor = Color.red; error = true; break;
+            case errorColor.blue: currentColor = Color.blue; break;
+            case errorColor.grey: currentColor = Color.grey; error = true; break;
         }
+
         OnActionEvent?.Invoke(e);
-        //updater UI med current color
 
     }
 
