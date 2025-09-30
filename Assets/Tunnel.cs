@@ -15,5 +15,7 @@ public abstract class Tunnel : MonoBehaviour
     //lys
     [SerializeField] protected ItemStatus[] light;
 
+    //Tunnel skal subc på alle ting i array i både light og vent
+
 
 }

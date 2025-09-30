@@ -3,21 +3,22 @@ using UnityEngine;
 
 public class ItemEvent : MonoBehaviour
 {
-    public event EventHandler OnKeyPressed;
+    private int spaceCount;
 
-    private void Start()
+    public event EventHandler<OnKeyPressedEventArgs> OnKeyPressed;
+
+    public class OnKeyPressedEventArgs : EventArgs
     {
-        OnKeyPressed += Test_OnSpacePressed;
+        public int spaceCount; 
     }
-    private void Test_OnSpacePressed(object sender, EventArgs e)
-    {
-        Debug.Log("Space!");
-    }    
+    
+      
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            OnKeyPressed?.Invoke(this, EventArgs.Empty);
+            spaceCount++;
+            OnKeyPressed?.Invoke(this, new OnKeyPressedEventArgs { spaceCount = spaceCount });
         }
 
     }
