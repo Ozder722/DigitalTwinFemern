@@ -5,9 +5,7 @@ using static ItemEvent;
 
 public abstract class ItemStatus : MonoBehaviour
 {
-    short id;
-    float runtime;
-    float downtime;
+    
 
     public enum ItemType
     {
