@@ -9,7 +9,7 @@ public class TunnelUIManager : MonoBehaviour
 
     private void Start()
     {
-        if (targetTunnel == null || buttonPrefab == null || buttonParent == null) return;
+        
 
         // Generer knapper for vent-array
         foreach (var item in targetTunnel.vent)

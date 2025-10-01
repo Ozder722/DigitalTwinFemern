@@ -18,20 +18,25 @@ public class UI_ItemStatus : MonoBehaviour
        thisImage = GetComponent<Image>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         if (targetItem != null)
         {
-         
-
             targetItem.OnActionEvent += HandleStatusChanged;
-            // sæt standardfarve til grøn
-            SetIcon(targetItem.type);
-            SetButtonColor(ItemStatus.errorColor.green);
 
-            
+            // Sæt ikon
+            SetIcon(targetItem.type);
+
+            HandleStatusChanged(targetItem.LastKnownState); 
+            // Brug targetItems seneste tilstand i stedet for altid grøn
+            //SetButtonColor(ItemStatus.errorColor.green);
         }
     }
+    //public void OnEnable() 
+    //{
+    //    HandleStatusChanged(targetItem.LastKnownState);
+    //}
+        
 
     private void OnDisable()
     {

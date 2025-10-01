@@ -52,8 +52,11 @@ public abstract class ItemStatus : MonoBehaviour
         SimulateState(errorColor.green);
     }
 
+    public errorColor LastKnownState { get; private set; } = errorColor.green;
+
     public void SimulateState(errorColor e)
     {
+        LastKnownState = e;
 
         switch (e)
         {
