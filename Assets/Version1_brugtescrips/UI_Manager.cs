@@ -1,40 +1,36 @@
-using UnityEngine;
-using UnityEngine.UI;
+ï»¿using UnityEngine;
 
 public class TunnelUIManager : MonoBehaviour
 {
-    public TunnelElement targetTunnel; // Tunnel-element vi viser UI for
-    public GameObject buttonPrefab;    // prefab med Button + ItemStatusUIButton script
-    public Transform buttonParent;     // hvor knapperne skal placeres i Canvas
+    public TunnelElement targetTunnel;   // Dit element med vent/light arrays
+    public GameObject buttonPrefab;       // prefab med UI_ItemStatus
+    public Transform ventRow;             // reference til VentRow i panel
+    public Transform lightRow;            // reference til LightRow i panel
 
     private void Start()
     {
-        
+        if (targetTunnel == null) return;
 
-        // Generer knapper for vent-array
+        // Fyld Vent-rÃ¦kke
         foreach (var item in targetTunnel.vent)
         {
-            CreateButtonForItem(item, "Vent");
+            CreateButtonForItem(item, "Vent", ventRow);
         }
 
-        // Generer knapper for light-array
+        // Fyld Light-rÃ¦kke
         foreach (var item in targetTunnel.light)
         {
-            CreateButtonForItem(item, "Light");
+            CreateButtonForItem(item, "Light", lightRow);
         }
     }
 
-    private void CreateButtonForItem(ItemStatus item, string type)
+    private void CreateButtonForItem(ItemStatus item, string type, Transform parent)
     {
         if (item == null) return;
 
-        // Instantiate prefab
-        GameObject btnObj = Instantiate(buttonPrefab, buttonParent);
-
-        // Navngiv knappen så man kan se hvilket objekt det repræsenterer
+        GameObject btnObj = Instantiate(buttonPrefab, parent);
         btnObj.name = $"{type}_{item.name}";
 
-        // Sæt targetItem på scriptet
         UI_ItemStatus uiButton = btnObj.GetComponent<UI_ItemStatus>();
         if (uiButton != null)
         {
