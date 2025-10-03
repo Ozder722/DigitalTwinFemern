@@ -11,7 +11,8 @@ public class WholeTunnel : Tunnel
     private CarMovement carMovement;
     private int bilstats;
     private GameObject randomBil;
-    
+
+    public bool trafficJam = false;
 
     private void Update()
     {
@@ -45,6 +46,7 @@ public class WholeTunnel : Tunnel
         if (Input.GetKeyDown(KeyCode.T))
         {
             TriggerTrafficJam();
+            trafficJam = true;
         }
         
 
