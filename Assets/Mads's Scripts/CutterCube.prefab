@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7907271417572417474}
   - component: {fileID: 8915139411817501738}
   - component: {fileID: 860185588553539148}
-  - component: {fileID: 189266767192685477}
+  - component: {fileID: 3090287983465410050}
   m_Layer: 0
   m_Name: CutterCube
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.65, y: 0.55, z: 0}
-  m_LocalScale: {x: 5, y: 2, z: 5}
+  m_LocalScale: {x: 1700, y: 100, z: 500}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &189266767192685477
+--- !u!114 &3090287983465410050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,12 +96,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1710217099754603417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5f6c1f5fa0a9bc4180976b913781ab3, type: 3}
+  m_Script: {fileID: 11500000, guid: ec962f21a318c7b4b828d1f86f065cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cutter: {fileID: 7907271417572417474}
-  targetMaterial: {fileID: 2100000, guid: 9f3816ab0e791fb45bb6116316b09b40, type: 2}
+  targetMaterial: {fileID: 2100000, guid: db1605d8f944afa4ca63193ccd2480d1, type: 2}
   slider: {fileID: 0}
-  minY: 0.55
-  maxY: 1.6
+  minY: 49
+  maxY: 130
   useOrientedBox: 0
