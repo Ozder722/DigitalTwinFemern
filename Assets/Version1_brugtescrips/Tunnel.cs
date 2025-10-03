@@ -4,7 +4,8 @@ using UnityEngine;
 public abstract class Tunnel : MonoBehaviour
 {
     //liste af biler
-    public List<GameObject> biler = new List<GameObject>();
+    public List<GameObject> bilerTyskland = new List<GameObject>();
+    public List<GameObject> bilerDanmark = new List<GameObject>();
     //liste af fejl
     [SerializeField] List<ItemStatus> ventErrors = new List<ItemStatus>();
     [SerializeField] List<ItemStatus> lightErrors = new List<ItemStatus>();

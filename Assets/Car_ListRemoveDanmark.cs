@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Car_List_Remove : MonoBehaviour
+public class Car_ListRemoveDanmark : MonoBehaviour
 {
     public Tunnel tunnel;
     private void OnTriggerEnter(Collider other)
     {
-        
-        tunnel.bilerTyskland.Remove(other.gameObject);
+
+        tunnel.bilerDanmark.Remove(other.gameObject);
     }
 }
