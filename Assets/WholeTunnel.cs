@@ -6,7 +6,8 @@ public class WholeTunnel : Tunnel
     public List<GameObject> alleBiler = new List<GameObject>();
 
     public Tunnel tunnel;
-
+    public Collider DK_Exit;
+    public Collider DE_Exit;
 
     private CarMovement carMovement;
     private int bilstats;
@@ -43,6 +44,8 @@ public class WholeTunnel : Tunnel
             }
 
         }
+
+        
         if (Input.GetKeyDown(KeyCode.T))
         {
             TriggerTrafficJam();
@@ -51,6 +54,25 @@ public class WholeTunnel : Tunnel
         
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Tjek om det er en bil
+        if (!alleBiler.Contains(other.gameObject)) return;
+
+        // Tjek hvilken exit bilen ramte
+        if (other == DK_Exit)
+        {
+            Debug.Log($"{other.name} forlod tunnelen mod Danmark");
+            alleBiler.Remove(other.gameObject);
+        }
+        else if (other == DE_Exit)
+        {
+            Debug.Log($"{other.name} forlod tunnelen mod Tyskland");
+            alleBiler.Remove(other.gameObject);
+        }
+    }
+
 
     public void TriggerTrafficJam()
     {

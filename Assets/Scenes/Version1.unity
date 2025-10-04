@@ -1146,8 +1146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTunnel: {fileID: 1851187541}
   buttonPrefab: {fileID: 6302316363700953874, guid: 31d0e08ebb269f243b80698074dd58fc, type: 3}
-  ventRow: {fileID: 1409427223}
-  lightRow: {fileID: 825489689}
+  ventRow: {fileID: 942993752}
+  lightRow: {fileID: 1118164365}
 --- !u!1 &186318494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,63 +1635,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 229900023031119542, guid: d0543ac200d84b44a8394ea305e2d2b5, type: 3}
   m_PrefabInstance: {fileID: 188126344}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &219119643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 219119645}
-  - component: {fileID: 219119644}
-  - component: {fileID: 219119646}
-  m_Layer: 0
-  m_Name: ItemEvent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &219119644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219119643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cda6e7d49ebf0340a9bb31b972f82ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &219119645
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219119643}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.064415, y: -3.8377, z: 7.2703667}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &219119646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219119643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806a8cb47c335c1458a27a2050ea6958, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &221561914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4303,7 +4246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -253.49817, y: 11.637512}
+  m_AnchoredPosition: {x: -253.49817, y: 11.637451}
   m_SizeDelta: {x: 1194.8749, y: -421.1549}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &581092742
@@ -4352,8 +4295,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTunnel: {fileID: 427825620}
   buttonPrefab: {fileID: 6302316363700953874, guid: 31d0e08ebb269f243b80698074dd58fc, type: 3}
-  ventRow: {fileID: 1963038238}
-  lightRow: {fileID: 253509102}
+  ventRow: {fileID: 602438332}
+  lightRow: {fileID: 62030689}
 --- !u!1 &590464310
 GameObject:
   m_ObjectHideFlags: 0
@@ -5679,7 +5622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -253.49817, y: 11.637512}
+  m_AnchoredPosition: {x: -253.49817, y: 11.637451}
   m_SizeDelta: {x: 1194.8749, y: -421.1549}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &739595853
@@ -7766,8 +7709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTunnel: {fileID: 2054099917}
   buttonPrefab: {fileID: 6302316363700953874, guid: 31d0e08ebb269f243b80698074dd58fc, type: 3}
-  ventRow: {fileID: 238093328}
-  lightRow: {fileID: 1379224345}
+  ventRow: {fileID: 1635376437}
+  lightRow: {fileID: 187580205}
 --- !u!1 &1058314352
 GameObject:
   m_ObjectHideFlags: 0
@@ -8724,7 +8667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -253.49817, y: 11.637512}
+  m_AnchoredPosition: {x: -253.49817, y: 11.637451}
   m_SizeDelta: {x: 1194.8749, y: -421.1549}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1262624974
@@ -13096,6 +13039,8 @@ MonoBehaviour:
   light: []
   alleBiler: []
   tunnel: {fileID: 0}
+  DK_Exit: {fileID: 1647014720}
+  DE_Exit: {fileID: 1495651762}
   trafficJam: 0
 --- !u!1 &1917917016
 GameObject:
@@ -15023,7 +14968,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1763934680}
-  - {fileID: 219119645}
   - {fileID: 49243567}
   - {fileID: 605484279}
   - {fileID: 1597110001}
