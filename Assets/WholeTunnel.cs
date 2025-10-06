@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WholeTunnel : Tunnel
 {
     public List<GameObject> alleBiler = new List<GameObject>();
 
-    public Tunnel tunnel;
     public Collider DK_Exit;
     public Collider DE_Exit;
 
@@ -15,8 +15,10 @@ public class WholeTunnel : Tunnel
 
     public bool trafficJam = false;
 
+
     private void Update()
     {
+
         for (int i = 0; i < bilerDanmark.Count; i++)
         {
             if (alleBiler.Contains(bilerDanmark[i]))
@@ -51,27 +53,26 @@ public class WholeTunnel : Tunnel
             TriggerTrafficJam();
             trafficJam = true;
         }
-        
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        // Tjek om det er en bil
-        if (!alleBiler.Contains(other.gameObject)) return;
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    // Tjek om det er en bil
+    //    if (!alleBiler.Contains(other.gameObject)) return;
 
-        // Tjek hvilken exit bilen ramte
-        if (other == DK_Exit)
-        {
-            Debug.Log($"{other.name} forlod tunnelen mod Danmark");
-            alleBiler.Remove(other.gameObject);
-        }
-        else if (other == DE_Exit)
-        {
-            Debug.Log($"{other.name} forlod tunnelen mod Tyskland");
-            alleBiler.Remove(other.gameObject);
-        }
-    }
+    //    // Tjek hvilken exit bilen ramte
+    //    if (other == DK_Exit)
+    //    {
+    //        Debug.Log($"{other.name} forlod tunnelen mod Danmark");
+    //        alleBiler.Remove(other.gameObject);
+    //    }
+    //    else if (other == DE_Exit)
+    //    {
+    //        Debug.Log($"{other.name} forlod tunnelen mod Tyskland");
+    //        alleBiler.Remove(other.gameObject);
+    //    }
+    //}
 
 
     public void TriggerTrafficJam()
