@@ -15,10 +15,7 @@ public abstract class ItemStatus : MonoBehaviour
     public ItemType type;
     public enum errorColor { green, yellow, red, blue, grey};
 
-    protected void Start()
-    {
-        //StartCoroutine(ChangeStateAfterSeconds(1));
-    }
+    
 
     private void Update()
     {
