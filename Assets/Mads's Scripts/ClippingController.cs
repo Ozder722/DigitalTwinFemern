@@ -6,7 +6,7 @@ public class ClippingController : MonoBehaviour
     [Header("References")]
     public Transform cutter;          // assign CutterCube
     public Material targetMaterial;   // material on RevealObject
-    public Slider slider;             // UI Slider
+    public Scrollbar slider;             // UI Slider
 
     [Header("Slider -> movement")]
     //public float minX = -2f;          // slider=0 => x = minX
