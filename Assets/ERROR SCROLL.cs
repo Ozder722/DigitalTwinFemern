@@ -95,10 +95,10 @@ public class ErrorScrollManager : MonoBehaviour
         float normalized = Mathf.Clamp01(1f - (distanceFromTop / (contentHeight - viewportHeight)));
 
         // Tilføj offset for at vise hele panelet
-        float offset = (targetRect.rect.height * 1.5f) / (contentHeight - viewportHeight);
+        float offset = (targetRect.rect.height * 5f) / (contentHeight - viewportHeight);
         normalized = Mathf.Clamp01(normalized + offset);
 
-        StopAllCoroutines();
+        StopAllCoroutines();    
         StartCoroutine(SmoothScrollTo(normalized));
     }
 
