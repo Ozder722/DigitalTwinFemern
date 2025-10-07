@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -12,23 +12,35 @@ public class ErrorScrollManager : MonoBehaviour
         instance = this;
     }
 
+    private static bool IsIgnoredColor(ItemStatus.errorColor color)
+    {
+        return color == ItemStatus.errorColor.green || color == ItemStatus.errorColor.blue;
+    }
+
+
+
     public static void ScrollToWorstError()
     {
         if (instance == null || instance.scrollRect == null) return;
 
-        // Find alle UI_TunnelButton-komponenter i ScrollRectens content
         var buttons = instance.scrollRect.content.GetComponentsInChildren<UI_TunnelButton>(true);
         if (buttons == null || buttons.Length == 0) return;
 
-        // Find vÊrste fejl vha. ErrorPriority
         UI_TunnelButton worstButton = null;
         int worstPriority = -999;
 
         foreach (var b in buttons)
         {
-            // Tag vÊrste farve fra vent og light
-            int ventP = ErrorPriority.GetPriority(b.GetVentColor());
-            int lightP = ErrorPriority.GetPriority(b.GetLightColor());
+            // Antag at dine GetVentColor()/GetLightColor() returnerer ItemStatus.errorColor
+            var ventColor = b.GetVentColor();
+            var lightColor = b.GetLightColor();
+
+            // Spring over, hvis begge farver er "ufarlige"
+            if (IsIgnoredColor(ventColor) && IsIgnoredColor(lightColor))
+                continue;
+
+            int ventP = ErrorPriority.GetPriority(ventColor);
+            int lightP = ErrorPriority.GetPriority(lightColor);
             int localWorst = Mathf.Max(ventP, lightP);
 
             if (localWorst > worstPriority)
@@ -38,13 +50,13 @@ public class ErrorScrollManager : MonoBehaviour
             }
         }
 
-        // Ingen fejl fundet (alt gr¯nt)
-        if (worstPriority <= 0 || worstButton == null)
+        if (worstButton == null || worstPriority <= 0)
             return;
 
-        // Scroll til den vÊrste fejl
         instance.ScrollToTarget(worstButton);
     }
+
+
 
     private void ScrollToTarget(UI_TunnelButton targetButton)
     {
@@ -52,20 +64,48 @@ public class ErrorScrollManager : MonoBehaviour
 
         RectTransform content = scrollRect.content;
         RectTransform targetRect = targetButton.GetComponent<RectTransform>();
+        RectTransform viewport = scrollRect.viewport;
 
-        Canvas.ForceUpdateCanvases();
+        // Vent √©t frame, s√• layoutet er opdateret
+        StartCoroutine(ScrollNextFrame(targetRect));
+    }
+
+    private System.Collections.IEnumerator ScrollNextFrame(RectTransform targetRect)
+    {
+        yield return null; // Vent √©t frame, s√• layout er opdateret
+
+        RectTransform content = scrollRect.content;
+        RectTransform viewport = scrollRect.viewport;
 
         float contentHeight = content.rect.height;
-        float viewportHeight = scrollRect.viewport.rect.height;
-        float targetPosY = Mathf.Abs(targetRect.anchoredPosition.y);
+        float viewportHeight = viewport.rect.height;
 
-        float normalized = targetPosY / (contentHeight - viewportHeight);
-        normalized = Mathf.Clamp01(normalized);
+        // Find midtpunkt for target i world-space
+        Vector3[] targetCorners = new Vector3[4];
+        targetRect.GetWorldCorners(targetCorners);
+        float targetMiddleY = (targetCorners[0].y + targetCorners[1].y + targetCorners[2].y + targetCorners[3].y) / 4f;
 
-        // Smooth scroll (valgfrit)
+        // Konverter til content-space
+        Vector3 targetLocalPos = content.InverseTransformPoint(new Vector3(0, targetMiddleY, 0));
+
+        float contentTop = content.rect.height * (1 - content.pivot.y);
+        float distanceFromTop = contentTop - targetLocalPos.y;
+
+        // Beregn normaliseret scrollv√¶rdi
+        float normalized = Mathf.Clamp01(1f - (distanceFromTop / (contentHeight - viewportHeight)));
+
+        // Tilf√∏j offset for at vise hele panelet
+        float offset = (targetRect.rect.height * 1.5f) / (contentHeight - viewportHeight);
+        normalized = Mathf.Clamp01(normalized + offset);
+
         StopAllCoroutines();
-        StartCoroutine(SmoothScrollTo(1f - normalized));
+        StartCoroutine(SmoothScrollTo(normalized));
     }
+
+
+
+
+
 
     private System.Collections.IEnumerator SmoothScrollTo(float targetPos)
     {
