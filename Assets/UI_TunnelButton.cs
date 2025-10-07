@@ -66,6 +66,8 @@ public class UI_TunnelButton : MonoBehaviour
         // Knapfarve kan fx følge værste af begge (eller vælge anden logik)
         ItemStatus.errorColor worstOverall = worstVentPriority > worstLightPriority ? worstVent : worstLight;
         button.image.color = GetColorFromError(worstOverall);
+
+        ErrorScrollManager.ScrollToWorstError();
     }
 
     private Color GetColorFromError(ItemStatus.errorColor state)
