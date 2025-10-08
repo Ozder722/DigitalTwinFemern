@@ -175,14 +175,17 @@ public class WholeTunnel : Tunnel
 
     public void RestartStoppedCars()
     {
+        // Stop alle aktive coroutines, så StopCarsAfterDelay ikke aktiveres bagefter
+        StopAllCoroutines();
+
         // Genstart alle biler i Danmark
         foreach (GameObject bil in bilerDanmark)
         {
             if (bil == null) continue;
             CarMovement cm = bil.GetComponent<CarMovement>();
-            if (cm != null && cm.speed == 0) // kun de stoppede biler
+            if (cm != null && cm.speed == 0)
             {
-                cm.speed = cm.dSpeed; // antag CarMovement har defaultSpeed
+                cm.speed = cm.dSpeed;
             }
         }
 
@@ -197,12 +200,13 @@ public class WholeTunnel : Tunnel
             }
         }
 
-        // Skift knapfarve tilbage til normal (fx grøn)
+        // Skift knapfarve tilbage til grøn
         if (trafficButton != null)
             trafficButton.image.color = Color.green;
 
         Debug.Log("Alle stoppede biler er nu genstartet.");
     }
+
 
 
 
