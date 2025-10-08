@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TunnelEventSystem : MonoBehaviour
 {
     [SerializeField] List<TunnelElement> elementer = new List<TunnelElement>();
+    public TextMeshProUGUI text;
 
     private void Update()
     {
@@ -37,6 +39,7 @@ public class TunnelEventSystem : MonoBehaviour
         chosenItem.SimulateState(randomError);
 
         Debug.Log($"Tunnel event: {chosenTunnel.name} - {chosenItem.name} -> {randomError}");
+        text.text = ($"Tunnel event: {chosenTunnel.name} - {chosenItem.name} -> {randomError}");
     }
 
     private ItemStatus.errorColor GetRandomErrorColor()
