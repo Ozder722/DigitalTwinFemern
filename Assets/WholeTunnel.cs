@@ -16,7 +16,9 @@ public class WholeTunnel : Tunnel
     private GameObject randomBil;
 
     public bool trafficJam = false;
-    public Button trafficButton; 
+    public Button trafficButton;
+
+    public TextMeshProUGUI text;
 
 
     private void Update()
@@ -115,10 +117,12 @@ public class WholeTunnel : Tunnel
         if (bilerDanmark.Contains(randomBil))
         {
             Debug.Log("Danske biler stop");
+            text.text = ("Danske biler stop");
         }
         else if (bilerTyskland.Contains(randomBil))
         {
             Debug.Log("Tyske biler stop");
+            text.text = ("Tyske biler stop");
         }
 
 
